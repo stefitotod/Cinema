@@ -63,7 +63,7 @@ SELECT cinema.name AS cinema_name, room.number AS room_num, show_movies.time AS 
 FROM cinema
 JOIN room ON cinema.cinema.id = room.cinema_id
 JOIN show_movies ON (room.cinema_id, room.number) = (show_movies.cinema_id, show_movies.room_number)
-WHERE room.type = 'VIP' OR 'deluxe'
+WHERE room.type IN ('VIP', 'deluxe')
 AND show_movies.movie_id = (SELECT id FROM movie WHERE movie.name = 'Inception')
 ORDER BY cinema.name, room.number;
 
